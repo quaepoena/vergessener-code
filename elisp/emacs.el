@@ -1,0 +1,21 @@
+;; Helper function for cleaning up Latin conjugation files.
+(defun declinatio-macrons ()
+  """Replace a/e/i/o/u with their respective variants with macrons."""
+  (interactive)
+
+  (cond ((eq (char-after (point)) 97)
+	 (progn (delete-forward-char 1)
+		(insert-char ?ā)))
+	((eq (char-after (point)) 101)
+	 (progn (delete-forward-char 1)
+		(insert-char ?ē)))
+	((eq (char-after (point)) 105)
+	 (progn (delete-forward-char 1)
+		(insert-char ?ī)))
+	((eq (char-after (point)) 111)
+	 (progn (delete-forward-char 1)
+		(insert-char ?ō)))
+	((eq (char-after (point)) 117)
+	 (progn (delete-forward-char 1)
+		(insert-char ?ū)))
+	(t (forward-char))))
