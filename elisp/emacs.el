@@ -1,3 +1,5 @@
+;; TODO: Remove trivial code, document anything that remains.
+
 ;; https://www.masteringemacs.org/article/introduction-to-ido-mode
 (setq ido-enable-flex-matching t)
 (setq ido-everywhere t)
