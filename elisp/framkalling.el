@@ -44,7 +44,7 @@
 	  (when (< pos 0)
 	    (message "Du er på det fyrste biletet.")
 	    (sleep-for 2)
-	    (throw 'start (setf pos (1+ pos))))
+	    (throw 'start (setf pos 0)))
 
 	  (when (>= pos n)
 	    (message "Du er på det siste biletet.")
