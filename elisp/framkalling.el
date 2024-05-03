@@ -65,7 +65,7 @@ ANTAL. Um det ikkje stemmer, viser NY um me lyt auka eller minska ANTAL."
 			       (få-hjelpetekst (cdr (elt filar pos)))
 			       "\n\n"
 			       "Behalda? (j/n)\n"
-			       "Førre/Próximo? (f/p)\n"
+			       "Førre/Próximo? (f/p/Enter)\n"
 			       "Gå til Starten/Enden (S/E)\n"
 			       "Avslutta (a): ")
 		       '("j" "n" "f" "p" "a" "S" "E" "") nil t)))
