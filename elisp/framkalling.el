@@ -54,7 +54,9 @@
 	  (visa-fil (car (elt filar pos)))
 
 	  (let ((svar (completing-read
-		       (concat (få-hjelpetekst (cdr (elt filar pos)))
+		       (concat (format"Bilete %d/%d" (1+ pos) n)
+			       "\n"
+			       (få-hjelpetekst (cdr (elt filar pos)))
 			       "\n\n"
 			       "Behalda? (j/n)\n"
 			       "Førre/Próximo? (f/p)\n"
