@@ -47,7 +47,7 @@ ANTAL. Um det ikkje stemmer, viser NY um me lyt auka eller minska ANTAL."
 	  (string-match-p (rx line-start (one-or-more digit) line-end) x))))
 
   (let* ((case-fold-search t)
-	 (filtype-rx (rx (or "jpg" "jpeg" "png") eol))
+	 (filtype-rx (rx (or "jpg" "jpeg" "png" "heic") eol))
 	 (tmp-filar (directory-files-recursively mappe1 filtype-rx nil t))
 	 (filar (mapcar (lambda (x) `(,x . nil)) tmp-filar))
 	 (n (length filar))
