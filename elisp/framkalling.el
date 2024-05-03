@@ -43,8 +43,8 @@ ANTAL. Um det ikkje stemmer, viser NY um me lyt auka eller minska ANTAL."
     "Særeigen fulføringsfunksjon til `completing-read'."
     (let ((val '("j" "n" "f" "p" "a" "S" "E" "")))
 
-      (cond ((member x val) x)
-	    ((string-match-p (rx line-start (one-or-more digit) line-end) x) x))))
+      (or (member x val)
+	  (string-match-p (rx line-start (one-or-more digit) line-end) x))))
 
   (let* ((case-fold-search t)
 	 (filtype-rx (rx (or "jpg" "jpeg" "png") eol))
