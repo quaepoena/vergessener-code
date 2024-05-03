@@ -53,7 +53,10 @@ ANTAL. Um det ikkje stemmer, viser NY um me lyt auka eller minska ANTAL."
 	 (n (length filar))
 	 (pos 0)
 	 (antal-valde 0)
-	 (avløysarpar (list (cons (rx "jpeg" eol) "jpg"))))
+	 (avløysarpar (list (cons (rx "jpeg" eol) "jpg")
+			    (cons (rx "JPEG" eol) "jpg")
+			    (cons (rx "HEIC" eol) "heic")
+			    (cons (rx "PNG" eol) "pngn"))))
 
     (catch 'avslutta
       (while t
