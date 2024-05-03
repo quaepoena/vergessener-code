@@ -39,6 +39,13 @@ ANTAL. Um det ikkje stemmer, viser NY um me lyt auka eller minska ANTAL."
 	  (1+ antal)
 	(1- antal))))
 
+  (defun fulføring (x)
+    "Særeigen fulføringsfunksjon til `completing-read'."
+    (let ((val '("j" "n" "f" "p" "a" "S" "E" "")))
+
+      (cond ((member x val) x)
+	    ((string-match-p (rx line-start (one-or-more digit) line-end) x) x))))
+
   (let* ((case-fold-search t)
 	 (filtype-rx (rx (or "jpg" "jpeg" "png") eol))
 	 (tmp-filar (directory-files-recursively mappe1 filtype-rx nil t))
@@ -68,7 +75,7 @@ ANTAL. Um det ikkje stemmer, viser NY um me lyt auka eller minska ANTAL."
 			       "Førre/Próximo? (f/p/Enter)\n"
 			       "Gå til Starten/Enden (S/E)\n"
 			       "Avslutta (a): ")
-		       '("j" "n" "f" "p" "a" "S" "E" "") nil t)))
+		       '("j" "n" "f" "p" "a" "S" "E" "") nil #'fulføring)))
 
 	    (cond ((string-equal svar "j") (setf antal-valde (oppdatera-antal (cdr (elt filar pos)) t antal-valde)
 						 (cdr (elt filar pos)) t
@@ -81,6 +88,8 @@ ANTAL. Um det ikkje stemmer, viser NY um me lyt auka eller minska ANTAL."
 		   (setf pos (1+ pos)))
 		  ((string-equal svar "S") (setf pos 0))
 		  ((string-equal svar "E") (setf pos (1- n)))
+		  ((string-match-p (rx line-start (one-or-more digit) line-end) svar)
+		   (setf pos (1- (string-to-number svar))))
 		  ((string-equal svar "a") (throw 'avslutta t)))))))
 
     (dolist (fil filar)
