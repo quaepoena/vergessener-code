@@ -60,7 +60,7 @@ ANTAL. Um det ikkje stemmer, viser NY um me lyt auka eller minska ANTAL."
 	  (visa-fil (car (elt filar pos)))
 
 	  (let ((svar (completing-read
-		       (concat (format"Bilete %d/%d. Du heve hittil valde %d bilete." (1+ pos) n antal-valde)
+		       (concat (format "Bilete %d/%d. Du heve hittil valde %d bilete." (1+ pos) n antal-valde)
 			       "\n"
 			       (få-hjelpetekst (cdr (elt filar pos)))
 			       "\n\n"
