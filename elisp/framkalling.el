@@ -56,7 +56,7 @@ ANTAL. Um det ikkje stemmer, viser NY um me lyt auka eller minska ANTAL."
 	 (avløysarpar (list (cons (rx "jpeg" eol) "jpg")
 			    (cons (rx "JPEG" eol) "jpg")
 			    (cons (rx "HEIC" eol) "heic")
-			    (cons (rx "PNG" eol) "pngn"))))
+			    (cons (rx "PNG" eol) "png"))))
 
     (catch 'avslutta
       (while t
