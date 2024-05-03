@@ -52,13 +52,9 @@ ANTAL. Um det ikkje stemmer, viser NY um me lyt auka eller minska ANTAL."
       (while t
 	(catch 'start
 	  (when (< pos 0)
-	    (message "Du er på det fyrste biletet.")
-	    (sleep-for 2)
 	    (throw 'start (setf pos 0)))
 
 	  (when (>= pos n)
-	    (message "Du er på det siste biletet.")
-	    (sleep-for 2)
 	    (throw 'start (setf pos (1- n))))
 
 	  (visa-fil (car (elt filar pos)))
