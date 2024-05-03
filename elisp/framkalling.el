@@ -76,7 +76,7 @@ ANTAL. Um det ikkje stemmer, viser NY um me lyt auka eller minska ANTAL."
 			       "Gå til Starten/Enden (S/E)\n"
 			       "Hoppa til eit tal (tal)\n"
 			       "Avslutta (a): ")
-		       '("j" "n" "f" "p" "a" "S" "E" "") nil #'fulføring)))
+		       nil nil #'fulføring)))
 
 	    (cond ((string-equal svar "j") (setf antal-valde (oppdatera-antal (cdr (elt filar pos)) t antal-valde)
 						 (cdr (elt filar pos)) t
