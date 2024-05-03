@@ -30,12 +30,22 @@
 	"Dette biletet vert med."
       "Dette biletet vert IKKJE med."))
 
+  (defun oppdatera-antal (gamal ny antal)
+    "Um GAMAL er lik NY, heve valet ikkje endra seg, og me returnera
+ANTAL. Um det ikkje stemmer, viser NY um me lyt auka eller minska ANTAL."
+    (if (eq gamal ny)
+	antal
+      (if ny
+	  (1+ antal)
+	(1- antal))))
+
   (let* ((case-fold-search t)
 	 (filtype-rx (rx (or "jpg" "jpeg" "png") eol))
 	 (tmp-filar (directory-files-recursively mappe1 filtype-rx nil t))
 	 (filar (mapcar (lambda (x) `(,x . nil)) tmp-filar))
 	 (n (length filar))
 	 (pos 0)
+	 (antal-valde 0)
 	 (avløysarpar (list (cons (rx "jpeg" eol) "jpg"))))
 
     (catch 'avslutta
@@ -54,7 +64,7 @@
 	  (visa-fil (car (elt filar pos)))
 
 	  (let ((svar (completing-read
-		       (concat (format"Bilete %d/%d" (1+ pos) n)
+		       (concat (format"Bilete %d/%d. Du heve hittil valde %d bilete." (1+ pos) n )
 			       "\n"
 			       (få-hjelpetekst (cdr (elt filar pos)))
 			       "\n\n"
@@ -64,9 +74,11 @@
 			       "Avslutta (a): ")
 		       '("j" "n" "f" "p" "a" "S" "E" "") nil t)))
 
-	    (cond ((string-equal svar "j") (setf (cdr (elt filar pos)) t
+	    (cond ((string-equal svar "j") (setf antal-valde (oppdatera-antal (cdr (elt filar pos)) t antal-valde)
+						 (cdr (elt filar pos)) t
 						 pos (1+ pos)))
-		  ((string-equal svar "n") (setf (cdr (elt filar pos)) nil
+		  ((string-equal svar "n") (setf antal-valde (oppdatera-antal (cdr (elt filar pos)) nil antal-valde)
+						 (cdr (elt filar pos)) nil
 						 pos (1+ pos)))
 		  ((string-equal svar "f") (setf pos (1- pos)))
 		  ((or (string-equal svar "p") (string-empty-p svar))
