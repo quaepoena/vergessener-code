@@ -74,6 +74,7 @@ ANTAL. Um det ikkje stemmer, viser NY um me lyt auka eller minska ANTAL."
 			       "Behalda? (j/n)\n"
 			       "Førre/Próximo? (f/p/Enter)\n"
 			       "Gå til Starten/Enden (S/E)\n"
+			       "Hoppa til eit tal (tal)\n"
 			       "Avslutta (a): ")
 		       '("j" "n" "f" "p" "a" "S" "E" "") nil #'fulføring)))
 
